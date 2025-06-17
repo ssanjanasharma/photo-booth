@@ -7,6 +7,7 @@
   <title>Old School Photobooth</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="brown.webp" />
 
   <style>
     body {
@@ -41,7 +42,7 @@
     .social-icons a {
       color: #5e2b2b;
       margin-left: 12px;
-      font-size: 18px;
+      font-size: 22px;
       text-decoration: none;
       transition: color 0.3s ease;
     }
@@ -60,17 +61,15 @@
 
     .photo-strip {
       position: absolute;
-      margin: 0 auto;
       left: 50%;
       transform: translateX(-50%) rotate(-2deg);
       z-index: 1;
     }
 
     .photo-strip img {
-      width: 100%;
-      margin-top: 5px;
+      margin-top: 0.1px;
       max-width: 320px;
-      height: 450px;
+      height: 500px;
       border-radius: 10px;
       box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
     }
@@ -80,6 +79,7 @@
       z-index: 2;
       background: #fff7c6;
       border-radius: 24px;
+      height: 330px;
       padding: 24px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       margin-top: 26px;
@@ -87,14 +87,9 @@
     }
 
     .about-card p {
-      font-family: "Nanum Pen Script", cursive;
       margin: 14px 0;
       line-height: 1.6;
       font-size: 16px;
-    }
-
-    .about-card p:first-child {
-      font-size: 20px;
     }
 
     footer {
@@ -122,8 +117,6 @@
   <div class="social-icons">
     <a href="https://www.linkedin.com/in/sanjana-kumari-sharma/" target="_blank"><i class="fab fa-linkedin"></i></a>
     <a href="https://github.com/ssanjanasharma" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/heyyy.sana/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="https://pin.it/1RTvhkyn9" target="_blank"><i class="fab fa-pinterest"></i></a>
 
   </div>
 
@@ -131,7 +124,7 @@
 
   <div class="about-section">
     <div class="photo-strip">
-      <img src="homepolaroid1.jpg" alt="Photo Strip" />
+      <img src="about.jpg" alt="Photo Strip" />
     </div>
     <div class="about-card">
       <p>♡</p>
@@ -140,7 +133,7 @@
       <p>This photo booth is designed to bring back the charm of old-school photo strips, with a modern twist...</p>
       <p>Built with love, warm tones, and just a touch of nostalgia — it’s more than just a camera.</p>
       <p>I hope you enjoy playing around here as much as I enjoyed building it!</p>
-      <p>love, sanjana</p>
+      <p>love, <br>sanjana</p></br>
     </div>
   </div>
 
