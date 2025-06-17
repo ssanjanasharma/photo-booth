@@ -1,7 +1,6 @@
 body {
-  font-family: "Moon Dance", cursive;
   background: url(nb.jpeg);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #5e2b2b;
   margin: 0;
   padding: 20px;
@@ -20,7 +19,7 @@ body {
 .have-fun {
   font-family: "Moon Dance", cursive;
   color: #5e2b2b;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 10px;
 }
 
@@ -91,7 +90,7 @@ body {
 }
 
 #capture-btn {
-  font-family: "Moon Dance", cursive;
+  font-family: "Nanum Pen Script", cursive;
   font-size: 1rem;
   color: #5e2b2b;
   margin: 10px 0;
@@ -102,7 +101,7 @@ body {
 }
 
 #done-btn {
-  font-family: "Moon Dance", cursive;
+  font-family: "Nanum Pen Script", cursive;
   margin-top: 20px;
   padding: 10px 25px;
   background-color: #5e2b2b;
@@ -124,10 +123,10 @@ body {
 }
 
 .filter-buttons button {
-  font-family: "Moon Dance", cursive;
+  font-family: "Nanum Pen Script", cursive;
   font-size: 1rem;
   color: #5e2b2b;
-  padding: 8px 15px;
+  padding: 10px 20px;
   border-radius: 20px;
   border: 1px solid black;
   background: white;
@@ -137,7 +136,7 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   body {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 10px;
   }
 
@@ -163,7 +162,7 @@ body {
 
   #capture-btn, #done-btn, .filter-buttons button {
     width: 90%;
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 
   .photo-strip-preview img {

@@ -6,9 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Old School Photobooth</title>
   <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="teddy.webp" />
+  
   <style>
     body {
-      font-family: "Moon Dance", cursive;
       color: #8b3a3a;
       font-size: 24px;
       margin: 0;
@@ -36,30 +37,30 @@
     }
 
     .preview {
-      width: 220px;
+      height: 610px;
       background: white;
-      padding: 16px 10px;
+      padding: 16px 15px;
       border-radius: 1px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
     }
 
     .preview img {
-      width: 100%;
+      width: 220px;
+      height: 180px;
       border-radius: 1px;
       object-fit: cover;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
     }
 
     .preview p {
-      font-family: "Moon Dance", cursive;
       font-size: 11px;
       color: #8b3a3a;
       text-align: center;
-      margin: 0;
+      margin: 11px;
     }
 
     .controls {
@@ -72,7 +73,7 @@
     .controls h3 {
       font-family: "Moon Dance", cursive;
       font-size: 40px;
-      font-weight: lighter;
+      font-weight: normal;
       margin: 0;
     }
 
@@ -152,7 +153,12 @@
 
       .preview {
         width: 100%;
-        max-width: 300px;
+        max-width: 210px;
+      }
+
+      .preview img{
+        height: 200px;
+        width: 210px;
       }
 
       .bottom-buttons button {
