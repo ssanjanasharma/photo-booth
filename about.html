@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Old School Photobooth</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Inter&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="brown.webp" />
+
+  <style>
+    body {
+      margin: 0;
+      /* background-color: #fefaf1; */
+      background: url(nb.jpeg);
+      color: #5c3a1d;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      text-decoration: none;
+      color: #5e2b2b;
+      z-index: 1000;
+    }
+
+    .social-icons {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+    }
+
+    .social-icons a {
+      color: #5e2b2b;
+      margin-left: 12px;
+      font-size: 22px;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #946464;
+    }
+
+    .about-section {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding-top: 180px;
+    }
+
+    .photo-strip {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      z-index: 1;
+    }
+
+    .photo-strip img {
+      margin-top: 0.1px;
+      max-width: 320px;
+      height: 450px;
+      border-radius: 10px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .about-card {
+      position: relative;
+      z-index: 2;
+      background: #fff7c6;
+      border-radius: 24px;
+      height: 330px;
+      padding: 24px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 26px;
+      text-align: left;
+    }
+
+    .about-card p {
+      margin: 14px 0;
+      line-height: 1.5;
+      font-size: 16px;
+    }
+
+    footer {
+      margin-top: 120px;
+      font-size: 12px;
+      color: #b89476;
+    }
+
+    @media (max-width: 480px) {
+      .photo-strip img {
+      margin-top: 0.1px;
+      max-width: 320px;
+      height: 450px;
+      border-radius: 10px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .about-card {
+        margin-top: 20px;
+        padding: 18px;
+      }
+
+      .about-card p {
+      margin: 14px 0;
+      line-height: 1.5;
+      font-size: 13.5px;
+    }
+
+     footer {
+      margin-top: 120px;
+      font-size: 12px;
+      color: #b89476;
+    }
+    
+    }
+  </style>
+</head>
+
+<body>
+  <a href="index.html" class="back-button">←</a>
+
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/in/sanjana-kumari-sharma/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/ssanjanasharma" target="_blank"><i class="fab fa-github"></i></a>
+    <a href="https://www.instagram.com/ssanjana___?igsh=MWF4M3JkbzYycTRjOA==" target="_blank"><i class="fab fa-instagram"></i></a>
+
+  </div>
+
+  </div>
+
+  <div class="about-section">
+    <div class="photo-strip">
+      <img src="about.jpg" alt="Photo Strip" />
+    </div>
+    <div class="about-card">
+      <p>♡</p>
+      <p>Welcome to my cozy little corner of the internet — a dreamy, vintage-inspired photo booth made for soft souls
+        and creative hearts.</p>
+      <p>This photo booth is designed to bring back the charm of old-school photo strips, with a modern twist...</p>
+      <p>Built with love, warm tones, and just a touch of nostalgia — it’s more than just a camera.</p>
+      <p>I hope you enjoy playing around here as much as I enjoyed building it!</p>
+      <p>love, <br>sanjana</p></br>
+    </div>
+  </div>
+
+  <footer>
+    Privacy Policy
+  </footer>
+</body>
+
+</html>

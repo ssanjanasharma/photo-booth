@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Old School Photobooth</title>
+    <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <link rel="icon" type="image/png" href="brown.webp" />
+
+   <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+
+        body {
+            margin: 0;
+            background: url(nb.jpeg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            color: #8b3a3a;
+        }
+
+        h1 {
+            font-family: "Moon Dance", cursive;
+            margin-top: 20px;
+            font-size: 1.6rem;
+            margin-bottom: 13px;
+            font-weight: lighter;
+        }
+
+        .strip {
+            height: 620px;
+            padding: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(-150px);
+            animation: drop 1.5s ease-out forwards;
+            animation-delay: 0.5s;
+            background-color: white;
+        }
+
+        @keyframes drop {
+            0% {
+                transform: translateY(-150px);
+                opacity: 0;
+            }
+
+            70% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .strip img {
+            width: 220px;
+            height: 180px;
+            border-radius: 1px;
+            object-fit: cover;
+        }
+
+        .strip p {
+            font-size: 12px;
+            margin: 11px;
+        }
+
+        button {
+            font-family: "Moon Dance", cursive;
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            background-color: #8b3a3a;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background: #c4626c;
+        }
+        
+    @media (max-width: 768px) {
+      body {
+        /* font-size: 20px; */
+        padding: 8px 20px;
+
+      }
+
+      .strip {
+        width: 100%;
+        max-width: 210px;
+      }
+
+      .strip img{
+        height: 200px;
+        width: 210px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 18px;
+        padding: 8px 20px;
+
+      }
+    }
+    </style>
+</head>
+
+<body>
+    <h1>Your Photo is ready</h1>
+    <div class="strip" id="strip-preview">
+        <!-- Images and timestamp will be added here -->
+    </div>
+
+    <button id="download-btn" disabled>Collect Photo</button>
+    <script>
+        // Example fallback data to test if sessionStorage is empty
+        const fallbackData = {
+            bgColor: "#fff",
+            images: [
+                "https://via.placeholder.com/200x300?text=Photo+1",
+                "https://via.placeholder.com/200x300?text=Photo+2",
+                "https://via.placeholder.com/200x300?text=Photo+3"
+            ],
+            timestamp: new Date().toLocaleString()
+        };
+
+        const strip = document.getElementById("strip-preview");
+        const downloadBtn = document.getElementById("download-btn");
+
+        // Load data from sessionStorage or use fallback for demo
+        let data = null;
+        try {
+            data = JSON.parse(sessionStorage.getItem("stripData"));
+        } catch (e) {
+            console.warn("Failed to parse sessionStorage data", e);
+        }
+        if (!data || !data.images || data.images.length === 0) {
+            data = fallbackData;
+        }
+
+        strip.style.backgroundColor = data.bgColor || "#fff";
+
+        // Load images and wait for all to finish loading before enabling download
+        let imagesLoadedCount = 0;
+
+        function checkAllLoaded() {
+            if (imagesLoadedCount === data.images.length) {
+                // Show the strip fully (animation triggers)
+                strip.style.opacity = 1;
+                strip.style.transform = "translateY(0)";
+                downloadBtn.disabled = false;
+            }
+        }
+
+        data.images.forEach(src => {
+            const img = document.createElement("img");
+            img.src = src;
+
+            // Listen for load and error events
+            img.onload = () => {
+                imagesLoadedCount++;
+                checkAllLoaded();
+            };
+
+            img.onerror = () => {
+                console.warn("Image failed to load:", src);
+                imagesLoadedCount++;
+                checkAllLoaded();
+                img.alt = "Image not available";
+                img.style.backgroundColor = "#eee";
+                img.style.minHeight = "150px";
+            };
+
+            strip.appendChild(img);
+        });
+
+        // Add timestamp text
+        const timestamp = document.createElement("p");
+        timestamp.innerText = data.timestamp || "";
+        strip.appendChild(timestamp);
+
+        // Download image only after all images are loaded
+        function downloadImage() {
+            // Disable button while rendering
+            downloadBtn.disabled = true;
+            downloadBtn.innerText = "Processing...";
+
+            html2canvas(strip, { backgroundColor: null }).then(canvas => {
+                const link = document.createElement("a");
+                link.download = "old-school.png";
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+
+                downloadBtn.disabled = false;
+                downloadBtn.innerText = "Collect Photo";
+            }).catch(err => {
+                console.error("Error capturing photo strip:", err);
+                downloadBtn.disabled = false;
+                downloadBtn.innerText = "Collect Photo";
+            });
+        }
+
+        downloadBtn.addEventListener("click", downloadImage);
+    </script>
+</body>
+
+</html>

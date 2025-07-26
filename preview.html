@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old School Photobooth</title>
+  <link href="https://fonts.googleapis.com/css2?family=Moon+Dance&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="brown.webp" />
+  
+  <style>
+    body {
+      color: #8b3a3a;
+      font-size: 24px;
+      margin: 0;
+      background: url(nb.jpeg);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      gap: 40px;
+      background: #fff4de;
+      padding: 30px;
+      border-radius: 12px;
+      border: 2px double #5e2b2b;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      flex-wrap: wrap;
+      max-width: 900px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .preview {
+      height: 610px;
+      background: white;
+      padding: 16px 15px;
+      border-radius: 1px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .preview img {
+      width: 220px;
+      height: 180px;
+      border-radius: 1px;
+      object-fit: cover;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .preview p {
+      font-size: 11px;
+      color: #8b3a3a;
+      text-align: center;
+      margin: 11px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 400px;
+    }
+
+    .controls h3 {
+      font-family: "Moon Dance", cursive;
+      font-size: 40px;
+      font-weight: normal;
+      margin: 0;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .buttons button {
+      font-family: "Moon Dance", cursive;
+      font-size: 18px;
+      padding: 10px 16px;
+      border: 1px solid #8b3a3a;
+      border-radius: 20px;
+      background: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .buttons button:hover {
+      background-color: #fff9f5;
+      transform: translateY(-2px);
+    }
+
+    .color-picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .bottom-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 26px;
+      margin-top: 30px;
+    }
+
+    .bottom-buttons button {
+      font-family: "Moon Dance", cursive;
+      background: #8b3a3a;
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      padding: 0.6rem 1.8rem;
+      font-size: 25px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .bottom-buttons button:hover {
+      background: #c4626c;
+      transform: translateY(-2px);
+    }
+
+    /* ========= Responsive Media Queries ========= */
+
+    @media (max-width: 768px) {
+      body {
+        font-size: 20px;
+        padding: 20px;
+      }
+
+      .container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .controls h3 {
+        font-size: 32px;
+      }
+
+       .preview {
+        width: 100%;
+        max-width: 210px;
+      } 
+
+       .preview img{
+        height: 200px;
+        width: 210px;
+      } 
+
+      .bottom-buttons button {
+        font-size: 20px;
+        padding: 0.5rem 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        font-size: 18px;
+        padding: 16px;
+      }
+
+      .controls h3 {
+        font-size: 28px;
+      }
+
+      .buttons button {
+        font-size: 16px;
+        padding: 8px 14px;
+      }
+
+      .bottom-buttons button {
+        font-size: 18px;
+        padding: 0.5rem 1.2rem;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="preview" id="photo-strip">
+      <!-- JavaScript will insert images and timestamp here -->
+    </div>
+
+    <div class="controls">
+      <div>
+        <h3>Customize your photo strip</h3>
+        <p>Frame colour</p>
+        <div class="buttons" id="color-buttons">
+          <button onclick="setColor('white')">White</button>
+          <button onclick="setColor('black')">Black</button>
+          <button onclick="setColor('#FAE6FA')">Pink</button>
+          <button onclick="setColor('#D6E0FF')">Blue</button>
+          <button onclick="setColor('#F0B2F0')">Purple</button>
+          <button onclick="setColor('#FFFFE6')">Yellow</button>
+          <button onclick="setColor('#D6F5D6')">Green</button>
+        </div>
+        <div class="color-picker">
+          Custom: <input type="color" onchange="setColor(this.value)" />
+        </div>
+      </div>
+
+      <div class="bottom-buttons">
+        <button onclick="downloadStrip()">Continue</button>
+        <button onclick="window.location.href='camera.html'">Try Again</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load photos from localStorage
+    const images = JSON.parse(localStorage.getItem('photoStripImages')) || [];
+    const strip = document.getElementById('photo-strip');
+
+    images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      strip.appendChild(img);
+    });
+
+    // Add timestamp at bottom
+    const timestamp = document.createElement('p');
+    const now = new Date();
+    timestamp.innerText = `Old School Booth ${now.toLocaleDateString()} ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`;
+    strip.appendChild(timestamp);
+
+    // Frame color change
+    function setColor(color) {
+      strip.style.backgroundColor = color;
+    }
+    function downloadStrip() {
+      const strip = document.getElementById("photo-strip");
+
+      // Save current strip background color and images to sessionStorage
+      const images = [...strip.getElementsByTagName("img")].map(img => img.src);
+      const bgColor = strip.style.backgroundColor || "#ffffff";
+      const timestamp = strip.querySelector("p")?.innerText || "";
+
+      sessionStorage.setItem("stripData", JSON.stringify({ images, bgColor, timestamp }));
+
+      // Open print.html in a new tab
+      window.location.href = "print.html";
+    }
+  </script>
+</body>
+
+</html>

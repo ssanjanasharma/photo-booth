@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Old School Photobooth</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nanum+Pen+Script&display=swap"
+    rel="stylesheet">
+    <link rel="icon" type="image/png" href="brown.webp" />
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Nanum Pen Script", cursive;
+            background: url(nb.jpeg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #5e2b2b;
+            overflow-x: hidden;
+            padding: 1rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.8rem;
+            margin: 0.5rem 0;
+            max-width: 90%;
+        }
+
+        .start-btn {
+            font-family: "Nanum Pen Script", cursive;
+            margin-top: 30px;
+            padding: 12px 30px;
+            font-size: 1.4rem;
+            border-radius: 30px;
+            background-color: #5e2b2b;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .start-btn:hover {
+            background-color: #946464;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 1.4rem;
+            }
+
+            .start-btn {
+                font-size: 1.2rem;
+                padding: 10px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.7rem;
+            }
+
+            p {
+                font-size: 1.2rem;
+            }
+
+            .start-btn {
+                font-size: 1.1rem;
+                padding: 8px 20px;
+                width: 80%;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Welcome!</h1>
+    <p>Get ready to snap — you've got <strong>3 or 5 seconds</strong> for each photo!</p>
+    <p>We'll take <strong>3 fun shots</strong> back-to-back, so strike your cutest pose!</p>
+    <p>Once you're done, grab your photo strip and share the smiles 💕</p>
+    <div class="button-row">
+        <button class="start-btn" onclick="location.href='camera.html'">Use Camera</button>
+    </div>
+</body>
+
+</html>

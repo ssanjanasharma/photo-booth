@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Old School Photobooth</title>
+  <link rel="stylesheet" href="camera.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nanum+Pen+Script&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" href="brown.webp" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="have-fun">Have Fun ♡</div>
+
+    <div class="camera-strip-container" style="display: flex; gap: 40px; justify-content: center;">
+      <div class="camera-wrapper">
+        <!-- ✅ ADDED playsinline below -->
+        <video id="camera" autoplay playsinline muted></video>
+        <div id="countdown-overlay"></div> 
+        <canvas id="photo-strip" width="320" height="960" style="display: none;"></canvas>
+      </div>
+
+      <div class="photo-strip-preview" id="photo-preview-strip"
+        style="display: flex; flex-direction: column; gap: 10px;">
+      </div>
+    </div>
+
+    <div class="controls">
+      <label for="countdown">Select Countdown Time:</label>
+      <select id="countdown">
+        <option value="3">3s</option>
+        <option value="5">5s</option>
+      </select>
+
+      <button id="capture-btn">Start Capture</button>
+
+      <p>Choose a filter for your photos!</p>
+      <div class="filter-buttons">
+        <button data-filter="none">No Filter</button>
+        <button data-filter="grayscale(100%)">B&W</button>
+        <button data-filter="sepia(100%)">Sepia</button>
+        <button data-filter="contrast(120%) saturate(1.2)">Vintage</button>
+        <button data-filter="brightness(110%)">Soft</button>
+        <button data-filter="contrast(150%) grayscale(50%)">Noir</button>
+        <button data-filter="saturate(200%)">Vivid</button>
+      </div>
+
+      <button id="done-btn" style="display:none; margin-top: 20px;">Done</button>
+    </div>
+  </div>
+
+  <script src="camera.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+/* Fonts & Base Styles */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: url(nb.jpeg);
+  color: #5e2b2b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  padding: 1.2rem 2rem;
+  text-align: right;
+}
+
+.nav-link {
+  font-family: "Nanum Pen Script", cursive;
+  text-decoration: none;
+  color: #5e2b2b;
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+
+/* Home Section */
+.home {
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Description */
+.discription {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 1.5rem;
+  margin-top: auto;
+  margin-bottom: 20px;
+  color: #946464;
+  text-align: center;
+  max-width: 90%;
+}
+
+/* Title */
+.title {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 3rem;
+  margin: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+
+.photo-strips {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.strip {
+  width: 100px;
+  height: auto;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.strip-left {
+  transform: rotate(-8deg);
+  z-index: 1;
+}
+
+.strip-right {
+  transform: rotate(5deg);
+  z-index: 2;
+}
+
+.strip:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+/* Buttons */
+.buttons {
+  font-family: "Nanum Pen Script", cursive;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+.btn {
+  background-color: #5e2b2b;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 40px;
+  font-size: 1rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #946464;
+}
+
+/* Footer */
+footer {
+  font-family: "Nanum Pen Script", cursive;
+  font-size: 1.2rem;
+  text-align: center;
+  color: #946464;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .discription {
+    font-size: 1.3rem;
+  }
+
+  .nav-link {
+    font-size: 1.1rem;
+  }
+
+  .btn {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .discription {
+    font-size: 1.1rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    width: 80%;
+    text-align: center;
+  }
+}
